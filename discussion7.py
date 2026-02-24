@@ -34,19 +34,16 @@ def load_listings(f):
 
     listing_dicts = []
 
-    with open("your_file.csv", "r", newline="", encoding="utf-8") as f:
-        csv_reader = csv.reader(f)
+    with open(full_path, "r", newline="", encoding="utf-8") as file:
+        csv_reader = csv.reader(file)
         header = next(csv_reader)
 
-    for row in csv_reader:
-        listing_dict = dict(zip(header, row))
-        listing_dicts.append(listing_dict)
+        for row in csv_reader:
+            listing_dict = dict(zip(header, row))
+            listing_dicts.append(listing_dict)
 
-    return listing_dict
+    return listing_dicts
 
-
-
-    pass
 
 ###############################################################################
 ##### TASK 2: CALCULATION FUNCTION (single calculation)
