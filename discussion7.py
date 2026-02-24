@@ -63,6 +63,31 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
         dict mapping (neighbourhood_group, room_type) -> average_price (float)
         e.g. { ('Downtown', 'Entire home/apt'): 123.45, ... }
     """
+
+    price_dicton = {}
+
+    for listing in listings:
+        neighbourhood_group = listing['neighbourhood_group']
+        room_type = listing['room_type']
+        price = float(listing['price'])
+
+        key = (neighbourhood_group,room_type)
+
+        if key not in price_dicton:
+            price_dicton[key] = [0,0]
+
+        price_dicton[key][0] += price
+        price_dicton[key][1] += 1
+
+    avg_diction = {}
+
+    for key in price_dicton:
+        avg_diction[key] = price_dicton[key][0] / price_dicton[key][1]
+    return avg_diction
+        
+
+
+
     pass
 
 
